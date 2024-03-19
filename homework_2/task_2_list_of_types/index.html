@@ -18,6 +18,25 @@
         const simpleTypes = `${typeof age}, ${typeof name}, ${typeof isStudent}, ${nullType}, ${undefinedType}, ${typeof symbolType}, ${typeof bigIntType}`;
 
         console.log("Примітивні типи даних:", simpleTypes);
+
+        let objectType = {
+            age: 30,
+            name: "Olha",
+        };
+        let arrayType = [1, 2, 3, 4, 5];
+        let functionType = function (a, b) {
+            return a + b;
+        };
+        let regExType = new RegExp("ab+c");
+
+        console.log("Обʼєктні типи даних:");
+        console.log(typeof objectType, objectType);
+        console.log(typeof arrayType, arrayType);
+        console.log(typeof regExType, regExType);
+        console.log(functionType);
+        console.log(
+            "а також всі інші типи даних, що не відносяться до примітивних, - є обʼєктними."
+        );
     </script>
 </head>
 <body>
