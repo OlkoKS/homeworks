@@ -6,8 +6,22 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script>
+        let age = 30;
+        let name = "Olha";
+        let isStudent = true;
+        let nullType = null;
+        let undefinedType;
+        let symbolType = Symbol();
+        let bigIntType = 1234567890123456789012345678901234567890n;
+
+        const simpleTypes = `${typeof age}, ${typeof name}, ${typeof isStudent}, ${nullType}, ${undefinedType}, ${typeof symbolType}, ${typeof bigIntType}`;
+
+        console.log("Примітивні типи даних:", simpleTypes);
+    </script>
 </head>
 <body>
-
+<h3>Task 2</h3>
+<p>List of data types in JavaScript</p>
 </body>
 </html>
