@@ -7,16 +7,24 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script>
-        let userName;
+        let resultName;
         function getName() {
-            userName = prompt('Please, enter your name', 'User');
+            let userName = prompt('Please, enter your name', 'User');
             console.log(userName);
+
+            if (userName) {
+                resultName = `${userName[0].toUpperCase()}${userName.slice(1)}`;
+                console.log(resultName);
+            }
         }
-        getName();
 
         function showGreetings() {
-            alert(`Hello, ${userName}! How are you?`);
+            if(resultName) {
+                alert(`Hello, ${resultName}! How are you?`);
+            }
         }
+
+        getName();
         showGreetings();
     </script>
 </head>
