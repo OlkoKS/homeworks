@@ -6,6 +6,53 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script>
+        let userNumber;
+        let firstNumber;
+        let secondNumber;
+        let thirdNumber;
+
+        function getNumber() {
+            userNumber = prompt('Будь ласка, введіть тризначне число:');
+            console.log(userNumber);
+        }
+
+        function separateNumbers() {
+            if(userNumber) {
+                firstNumber = +String(userNumber).slice(0, 1);
+                console.log(firstNumber);
+
+                secondNumber = +String(userNumber).slice(1, 2);
+                console.log(secondNumber);
+
+                thirdNumber = +String(userNumber).slice(2);
+                console.log(thirdNumber);
+            }
+        }
+
+        function checkEquality() {
+            let equality = firstNumber === secondNumber && firstNumber === thirdNumber;
+            if(equality) {
+                console.log("Чи всі цифри однакові? - Так");
+            } else {
+                console.log("Чи всі цифри однакові? - Ні");
+            }
+        }
+
+        function checkIdentity() {
+            let identity = firstNumber === secondNumber || firstNumber === thirdNumber || secondNumber === thirdNumber;
+            if(identity) {
+                console.log("Чи є серед цифр однакові? - Так");
+            } else {
+                console.log("Чи є серед цифр однакові? - Ні");
+            }
+        }
+
+        getNumber();
+        separateNumbers();
+        checkEquality();
+        checkIdentity();
+    </script>
 </head>
 <body>
 <h3>Task 2</h3>
