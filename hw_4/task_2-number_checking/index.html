@@ -7,15 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script>
-        let userNumber;
         let firstNumber;
         let secondNumber;
         let thirdNumber;
-
-        function getNumber() {
-            userNumber = prompt('Будь ласка, введіть тризначне число:');
-            console.log(userNumber);
-        }
 
         function separateNumbers(number) {
             firstNumber = +String(number).slice(0, 1);
@@ -47,7 +41,8 @@
         }
 
         function checkNumber() {
-            getNumber();
+            let userNumber = prompt('Будь ласка, введіть тризначне число:');
+            console.log(userNumber);
             if(userNumber) {
                 separateNumbers(userNumber);
                 checkEquality();
