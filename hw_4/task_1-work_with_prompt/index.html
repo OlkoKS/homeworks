@@ -6,6 +6,19 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script>
+        let userName;
+        function getName() {
+            userName = prompt('Please, enter your name', 'User');
+            console.log(userName);
+        }
+        getName();
+
+        function showGreetings() {
+            alert(`Hello, ${userName}! How are you?`);
+        }
+        showGreetings();
+    </script>
 </head>
 <body>
 <h3>Task 1</h3>
