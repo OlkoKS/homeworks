@@ -28,8 +28,7 @@
             console.log(thirdNumber);
         }
 
-        function checkEquality(number) {
-            separateNumbers(number);
+        function checkEquality() {
             let equality = firstNumber === secondNumber && firstNumber === thirdNumber;
             if(equality) {
                 console.log("Чи всі цифри однакові? - Так");
@@ -38,8 +37,7 @@
             }
         }
 
-        function checkIdentity(number) {
-            separateNumbers(number);
+        function checkIdentity() {
             let identity = firstNumber === secondNumber || firstNumber === thirdNumber || secondNumber === thirdNumber;
             if(identity) {
                 console.log("Чи є серед цифр однакові? - Так");
@@ -50,8 +48,9 @@
 
         getNumber();
         if(userNumber) {
-            checkEquality(userNumber);
-            checkIdentity(userNumber);
+            separateNumbers(userNumber);
+            checkEquality();
+            checkIdentity();
         }
     </script>
 </head>
