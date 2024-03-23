@@ -7,24 +7,22 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script>
-        let resultName;
-        function getName() {
+        function nameToUpperCase(name) {
+           name = `${name[0].toUpperCase()}${name.slice(1)}`;
+           return name;
+        }
+
+        function showGreetings() {
             let userName = prompt('Please, enter your name', 'User');
             console.log(userName);
 
             if (userName) {
-                resultName = `${userName[0].toUpperCase()}${userName.slice(1)}`;
+                let resultName = nameToUpperCase(userName);
                 console.log(resultName);
-            }
-        }
-
-        function showGreetings() {
-            if(resultName) {
                 alert(`Hello, ${resultName}! How are you?`);
             }
         }
 
-        getName();
         showGreetings();
     </script>
 </head>
