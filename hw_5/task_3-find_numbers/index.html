@@ -7,14 +7,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script>
-        let userNumber = prompt('Будь ласка, введіть будь-яке ціле число:');
+        let userNumber = +prompt('Будь ласка, введіть будь-яке ціле число:');
 
         if(!userNumber) {
             console.log('Користувач не ввів число');
         } else {
             while (userNumber - Math.trunc(userNumber) !== 0) {
                 alert('Введене число не є цілим (або Ви ввели не числове значення)!');
-                userNumber = prompt('Будь ласка, введіть ціле число:');
+                userNumber = +prompt('Будь ласка, введіть ціле число:');
         }
             console.log(`Ваше число: ${userNumber}`);
 
