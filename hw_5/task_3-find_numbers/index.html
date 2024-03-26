@@ -13,7 +13,7 @@
             console.log('Користувач не ввів число');
         } else {
             while (userNumber - Math.trunc(userNumber) !== 0) {
-                alert('Введене число не є цілим!');
+                alert('Введене число не є цілим (або Ви ввели не числове значення)!');
                 userNumber = prompt('Будь ласка, введіть ціле число:');
         }
             console.log(`Ваше число: ${userNumber}`);
