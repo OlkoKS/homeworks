@@ -6,6 +6,34 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script>
+        let userNumber = +prompt('Будь ласка, введіть будь-яке ціле число:');
+        let count = 0;
+
+        while(Number.isNaN(userNumber)){
+            alert('Ввведене значення не є числом');
+            userNumber = +prompt('Будь ласка, введіть ціле число:');
+        }
+
+        if(userNumber === 0) {
+            console.log('Нуль не є простим числом (або Ви не ввели жодного значення)');
+        } else if(userNumber <= 1 && userNumber !== 0) {
+            console.log('Не є простим числом');
+        } else {
+            for(let i = 2; i < userNumber; i++) {
+                if ( userNumber / i === Math.round(userNumber / i)) {
+                    count++;
+                }
+            }
+            console.log(`Count = ${count}`);
+
+            if(count === 0) {
+                console.log(`${userNumber} є простим числом`);
+            } else {
+                console.log('Не є простим числом');
+            }
+        }
+    </script>
 </head>
 <body>
 <h3>Task 4</h3>
