@@ -6,6 +6,33 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script>
+        let userString = prompt('Введіть текстовий рядок:');
+        console.log(userString);
+        let userSymbols = prompt('Введіть дві літери, які бажаєте видалити з рядку (без пробілу):');
+        console.log(userSymbols);
+
+        function getShortString(string, symbols) {
+            if(string && symbols) {
+                let stringArray = string.split('');
+                console.log(stringArray);
+                let symbolsArray = symbols.split('');
+                console.log(symbolsArray);
+                let res = [];
+
+                for(let i = 0; i < stringArray.length; i++) {
+                    if(stringArray[i] !== symbolsArray[0] && stringArray[i] !== symbolsArray[1]) {
+                        res.push(stringArray[i]);
+                    }
+                }
+                return `Отримано результат: "${res.join('')}"`;
+            }
+            alert('Ви не ввели всі потрібні значення');
+        }
+
+        let shortString = getShortString(userString, userSymbols);
+        console.log(shortString);
+    </script>
 </head>
 <body>
 <h3>Task 3</h3>
