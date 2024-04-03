@@ -14,8 +14,8 @@
             let sumNumber = 0;
             let amount = 0;
 
-            for(let i = 0; i < array.length; i++) {
-                if(typeof array[i] === "number") {
+            for (let i = 0; i < array.length; i++) {
+                if (typeof array[i] === "number") {
                     sumNumber += array[i];
                     amount++;
                 }
@@ -23,7 +23,7 @@
             console.log(sumNumber);
             console.log(amount);
 
-            if(amount !== 0) {
+            if (amount !== 0) {
                 return `Середнє арифметичне всіх чисел масиву = ${sumNumber / amount}`;
             }
             return 'В даному масиві немає жодного числа';
