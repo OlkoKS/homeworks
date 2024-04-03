@@ -13,15 +13,15 @@
         console.log(userSymbols);
 
         function getShortString(string, symbols) {
-            if(string && symbols) {
+            if (string && symbols) {
                 let stringArray = string.split('');
                 console.log(stringArray);
                 let symbolsArray = symbols.split('');
                 console.log(symbolsArray);
                 let res = [];
 
-                for(let i = 0; i < stringArray.length; i++) {
-                    if(stringArray[i] !== symbolsArray[0] && stringArray[i] !== symbolsArray[1]) {
+                for (let i = 0; i < stringArray.length; i++) {
+                    if (stringArray[i] !== symbolsArray[0] && stringArray[i] !== symbolsArray[1]) {
                         res.push(stringArray[i]);
                     }
                 }
