@@ -6,9 +6,35 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script>
+        let originArray = [1, true, 2, false, 3, null, 0, 'p']; //example
+        console.log(originArray);
+
+        function calcArithmeticMean(array) {
+            let sumNumber = 0;
+            let amount = 0;
+
+            for(let i = 0; i < array.length; i++) {
+                if(typeof array[i] === "number") {
+                    sumNumber += array[i];
+                    amount++;
+                }
+            }
+            console.log(sumNumber);
+            console.log(amount);
+
+            if(amount !== 0) {
+                return `Середнє арифметичне всіх чисел масиву = ${sumNumber / amount}`;
+            }
+            return 'В даному масиві немає жодного числа';
+        }
+
+        let result = calcArithmeticMean(originArray);
+        console.log(result);
+    </script>
 </head>
 <body>
 <h3>Task 2</h3>
-<p>Get the arithmetic mean</p>
+<p>Calc the arithmetic mean</p>
 </body>
 </html>
