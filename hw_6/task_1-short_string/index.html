@@ -7,30 +7,23 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script>
-        let userString = prompt('Введіть текстовий рядок:');
+        let userString = 'Hello world'; // example
         console.log(userString);
-        let userSymbols = prompt('Введіть дві літери, які бажаєте видалити з рядку (без пробілу):');
+        let userSymbols = ['l', 'd']; // example
         console.log(userSymbols);
 
-        function getShortString(string, symbols) {
-            if (string && symbols) {
-                let stringArray = string.split('');
-                console.log(stringArray);
-                let symbolsArray = symbols.split('');
-                console.log(symbolsArray);
-                let res = [];
+        function cutString(string, array) {
+            let res = string;
 
-                for (let i = 0; i < stringArray.length; i++) {
-                    if (stringArray[i] !== symbolsArray[0] && stringArray[i] !== symbolsArray[1]) {
-                        res.push(stringArray[i]);
-                    }
+            for (let symbol of array) {
+                if (res.includes(symbol)) {
+                    res = res.replaceAll(symbol, '');
                 }
-                return `Отримано результат: "${res.join('')}"`;
             }
-            alert('Ви не ввели всі потрібні значення');
+            return `Отримано результат: "${res}"`;
         }
 
-        let shortString = getShortString(userString, userSymbols);
+        let shortString = cutString(userString, userSymbols);
         console.log(shortString);
     </script>
 </head>
