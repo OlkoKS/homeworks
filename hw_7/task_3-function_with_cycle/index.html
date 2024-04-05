@@ -6,6 +6,28 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script>
+        function getNumbers() {
+            let number = 0;
+            let iterations = 0;
+
+            for (let i = 1; i <= 10; i++) {
+                let userNumber = prompt('Будь ласка, введіть число більше 100:');
+                number = userNumber;
+                ++iterations;
+                if (userNumber > 100) {
+                    console.log(`Кількість ітерацій циклу: ${iterations}`);
+                    console.log(`Результат: ${number}`);
+                    break;
+                } else if (iterations === 10 && userNumber <= 100) {
+                    console.log(`Кількість ітерацій циклу: ${iterations}`);
+                    alert('Максимально можливу кількість ітерацій вичерпано. Цикл завершено!');
+                }
+            }
+        }
+
+        getNumbers();
+    </script>
 </head>
 <body>
 <h3>Task 3</h3>
