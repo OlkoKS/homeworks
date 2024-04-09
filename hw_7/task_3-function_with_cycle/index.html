@@ -13,15 +13,14 @@
 
             for (let i = 1; i <= 10; i++) {
                 let userNumber = prompt('Будь ласка, введіть число більше 100:');
+
                 number = userNumber;
                 ++iterations;
-                if (userNumber > 100) {
+
+                if (+userNumber > 100 || isNaN(+userNumber) || iterations === 10) {
                     console.log(`Кількість ітерацій циклу: ${iterations}`);
                     console.log(`Результат: ${number}`);
                     break;
-                } else if (iterations === 10 && userNumber <= 100) {
-                    console.log(`Кількість ітерацій циклу: ${iterations}`);
-                    alert('Максимально можливу кількість ітерацій вичерпано. Цикл завершено!');
                 }
             }
         }
