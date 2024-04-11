@@ -6,6 +6,25 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script>
+        let ladder = {
+            step: 0,
+            up: function () { // підніматиме вас на одну сходинку
+                ++this.step;
+                return this;
+            },
+            down: function () { // опускатиме вас на одну сходинку
+                --this.step;
+                return this;
+            },
+            showStep: function () { // показує поточну сходинку
+                console.log(`Поточна сходинка: ${this.step}`);
+                return this;
+            }
+        };
+
+        console.log(ladder.up().up().down().showStep().up().up().showStep());
+    </script>
 </head>
 <body>
 <h3>Task 1</h3>
