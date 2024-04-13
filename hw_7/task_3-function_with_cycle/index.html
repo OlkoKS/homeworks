@@ -7,25 +7,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script>
-        function getNumbers() {
+        (function getNumbers() {
             let number = 0;
-            let iterations = 0;
 
             for (let i = 1; i <= 10; i++) {
                 let userNumber = prompt('Будь ласка, введіть число більше 100:');
 
                 number = userNumber;
-                ++iterations;
 
-                if (+userNumber > 100 || isNaN(+userNumber) || iterations === 10) {
-                    console.log(`Кількість ітерацій циклу: ${iterations}`);
+                if (+userNumber > 100 || isNaN(+userNumber) || i === 10) {
+                    console.log(`Кількість ітерацій циклу: ${i}`);
                     console.log(`Результат: ${number}`);
                     break;
                 }
             }
-        }
-
-        getNumbers();
+        })();
     </script>
 </head>
 <body>
