@@ -14,7 +14,7 @@
             showUserCard() {
                 let userCard = Object.entries(this);
                 console.log('Інформація користувача:');
-                return userCard.forEach((el) => {
+                userCard.forEach((el) => {
                     if (typeof el[1] !== 'function') {
                         console.log(`${el[0]}: ${el[1]}`);
                     }
