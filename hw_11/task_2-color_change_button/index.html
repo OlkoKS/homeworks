@@ -6,9 +6,53 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        body {
+            padding: 20px;
+            font-size: 20px;
+        }
+
+        button {
+            padding: 8px 10px;
+            font-size: 16px;
+            background-color: cornflowerblue;
+            border: 1px blue solid;
+            border-radius: 4px;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    </style>
 </head>
 <body>
 <h3>Task 2</h3>
-<p>Color change button</p>
+<h4>"Color change button"</h4>
+<div>
+    <p class='lorem-text'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet asperiores hic molestiae
+        nesciunt? Esse iure iusto
+        odit? Consectetur cumque facilis laudantium nisi provident rem tenetur. Aspernatur, dolorem eum facilis ipsum
+        laudantium modi nostrum voluptate! Accusamus accusantium alias atque autem corporis doloremque dolorum eius eos
+        error excepturi exercitationem explicabo facere hic impedit itaque laborum maiores minus molestiae neque nihil,
+        nulla quae quam quis ratione sequi similique sit tempora tenetur ut vel velit veniam veritatis voluptatibus!
+        Aliquid atque autem corporis dolor ducimus, ex fugiat mollitia nobis pariatur provident. Architecto earum iure
+        iusto maiores modi molestiae nostrum recusandae sunt suscipit totam, vel voluptas.</p>
+    <button type="button" class="button">Change text color</button>
+</div>
+<script>
+    const text = document.querySelector('.lorem-text');
+    const button = document.querySelector('.button');
+
+    function changeTextColor() {
+        text.classList.toggle('js--toggle');
+        if (text.classList.contains('js--toggle')) {
+            text.style.color = 'royalblue';
+        } else {
+            text.style.color = 'black';
+        }
+    }
+
+    button.addEventListener('click', changeTextColor);
+</script>
 </body>
 </html>
