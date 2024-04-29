@@ -88,7 +88,9 @@
     }
 
     function removeElement(event) {
-        todoList.removeChild(event.target.parentElement);
+        if (event.target.tagName === 'BUTTON') {
+            todoList.removeChild(event.target.parentElement);
+        }
     }
 
     function getToDo(event) {
