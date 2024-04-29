@@ -6,9 +6,205 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        body {
+            padding: 40px;
+            font-size: 24px;
+        }
+
+        .contact-form {
+            margin: 40px auto;
+            text-align: center;
+            width: 600px;
+            padding: 20px;
+            background-color: lightsteelblue;
+        }
+
+        h5 {
+            font-size: 40px;
+            margin: 24px 0;
+            color: salmon;
+        }
+
+        fieldset {
+            margin-top: 20px;
+            padding: 0;
+            border: none;
+        }
+
+        legend {
+            font-weight: 600;
+            color: dimgrey;
+        }
+
+        input {
+            margin: 20px auto 0;
+            width: 560px;
+            height: 60px;
+            padding: 0 10px;
+            font-size: 24px;
+            border-radius: 4px;
+        }
+
+        span {
+            font-size: 20px;
+            color: salmon;
+        }
+
+        button {
+            margin: 32px 0;
+            width: 400px;
+            height: 64px;
+            font-weight: 600;
+            font-size: 24px;
+            color: white;
+            background-color: lightcoral;
+            border: 1px solid royalblue;
+            border-radius: 8px;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    </style>
 </head>
 <body>
 <h3>Task 1</h3>
 <h4>Validation with regExp</h4>
+<section class="contact-section">
+    <div class="contact-form">
+        <h5>We would like to help you</h5>
+        <form class="js--contact-form">
+            <div>
+                <label for="name"></label>
+                <input type="text" id="name" name="name" placeholder="Name">
+                <span class="name"></span>
+            </div>
+
+            <div>
+                <label for="message"></label>
+                <input type="text" id="message" name="message" placeholder="Message">
+                <span class="message"></span>
+            </div>
+
+            <fieldset>
+                <legend>HOW TO ANSWER YOU?</legend>
+                <div>
+                    <label for="phone"></label>
+                    <input type="tel" id="phone" name="phone" placeholder="Phone +380 XX XXX XX XX">
+                    <span class="phone"></span>
+                </div>
+
+                <div>
+                    <label for="email"></label>
+                    <input type="email" id="email" name="email" placeholder="Email">
+                    <span class="email"></span>
+                </div>
+            </fieldset>
+            <button type="submit">Send message</button>
+        </form>
+    </div>
+</section>
+<script>
+    const form = document.querySelector('.js--contact-form');
+
+    let formDataError = {
+        name: '',
+        message: '',
+        phone: '',
+        email: ''
+    };
+
+    function showError(name) {
+        let error = '';
+        switch (name) {
+            case "name": {
+                error = 'Імʼя має містити хоча б один символ';
+                break;
+            }
+            case "message": {
+                error = 'Введіть не менше 5 символів';
+                break;
+            }
+            case "phone": {
+                error = 'Номер телефону має починатися з "+380"';
+                break;
+            }
+            case "email": {
+                error = 'Email повинен містити символ @ та крапку .';
+                break;
+            }
+            default:
+                error = '';
+        }
+        return error;
+    }
+
+    function validateValue(regExp, item) {
+        let errorContainer = document.querySelector(`.${item.name}`);
+        let errorText;
+
+        if (!regExp.test(item.value)) {
+            errorText = showError(item.name);
+            errorContainer.textContent = errorText;
+            formDataError[item.name] = errorText;
+        } else {
+            errorText = '';
+            errorContainer.textContent = errorText;
+            formDataError[item.name] = errorText;
+        }
+    }
+
+    function validateForm({target}) {
+        switch (target.name) {
+            case "name": {
+                validateValue(/\w+/i, target);
+                break;
+            }
+            case "message": {
+                validateValue(/\w{5,}/i, target);
+                break;
+            }
+            case "phone": {
+                validateValue(/\+380\d{9,}/, target);
+                break;
+            }
+            case "email": {
+                validateValue(/\w+@\w+\.\w+/, target);
+                break;
+            }
+            default:
+                formDataError[target.name] = '';
+
+        }
+    }
+
+    function getFormData(event) {
+        event.preventDefault();
+
+        const {name, message, phone, email} = formDataError;
+
+        if (name === '' && message === '' && phone === '' && email === '') {
+            const userData = new FormData(event.target);
+            let dataLength = 0;
+
+            userData.forEach((value, key) => {
+                if (value) {
+                    console.log(value, key);
+                    ++dataLength;
+                } else {
+                    alert(`Будь ласка, заповніть поле "${key}"`);
+                }
+            })
+
+            if (dataLength === 4) {
+                form.reset();
+            }
+        }
+    }
+
+    form.addEventListener('input', validateForm);
+    form.addEventListener('submit', getFormData);
+</script>
 </body>
 </html>
