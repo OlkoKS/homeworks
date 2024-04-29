@@ -57,7 +57,9 @@
     })();
 
     function showButton(event) {
-        alert(`Клікнуто на кнопці: ${event.target.textContent}`);
+        if (event.target.tagName === 'BUTTON') {
+            alert(`Клікнуто на кнопці: ${event.target.textContent}`);
+        }
     }
 
     buttonList.addEventListener('click', showButton);
