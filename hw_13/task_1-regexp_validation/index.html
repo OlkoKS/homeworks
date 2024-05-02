@@ -6,67 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <style>
-        body {
-            padding: 40px;
-            font-size: 24px;
-        }
-
-        .contact-form {
-            margin: 40px auto;
-            text-align: center;
-            width: 600px;
-            padding: 20px;
-            background-color: lightsteelblue;
-        }
-
-        h5 {
-            font-size: 40px;
-            margin: 24px 0;
-            color: salmon;
-        }
-
-        fieldset {
-            margin-top: 20px;
-            padding: 0;
-            border: none;
-        }
-
-        legend {
-            font-weight: 600;
-            color: dimgrey;
-        }
-
-        input {
-            margin: 20px auto 0;
-            width: 560px;
-            height: 60px;
-            padding: 0 10px;
-            font-size: 24px;
-            border-radius: 4px;
-        }
-
-        span {
-            font-size: 20px;
-            color: salmon;
-        }
-
-        button {
-            margin: 32px 0;
-            width: 400px;
-            height: 64px;
-            font-weight: 600;
-            font-size: 24px;
-            color: white;
-            background-color: lightcoral;
-            border: 1px solid royalblue;
-            border-radius: 8px;
-
-            &:hover {
-                cursor: pointer;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="./index.css">
 </head>
 <body>
 <h3>Task 1</h3>
@@ -144,12 +84,12 @@
         let errorContainer = document.querySelector(`.${item.name}`);
         let errorText;
 
-        if (!regExp.test(item.value)) {
-            errorText = showError(item.name);
+        if (regExp.test(item.value)) {
+            errorText = '';
             errorContainer.textContent = errorText;
             formDataError[item.name] = errorText;
         } else {
-            errorText = '';
+            errorText = showError(item.name);
             errorContainer.textContent = errorText;
             formDataError[item.name] = errorText;
         }
@@ -190,16 +130,19 @@
 
             userData.forEach((value, key) => {
                 if (value) {
-                    console.log(value, key);
                     ++dataLength;
                 } else {
-                    alert(`Будь ласка, заповніть поле "${key}"`);
+                    let emptyInput = document.getElementById(key);
+                    emptyInput.nextElementSibling.textContent = `Поле "${key}" не може залишатися порожнім`;
+                }
+
+                if (dataLength === 4) {
+                    userData.forEach((value, key) => {
+                        console.log(value, key);
+                    })
+                    form.reset();
                 }
             })
-
-            if (dataLength === 4) {
-                form.reset();
-            }
         }
     }
 
