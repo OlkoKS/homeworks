@@ -16,12 +16,35 @@
         <div class="button-container">
             <span class="js--prev-button" id="prev-button">&lt;</span>
         </div>
-        <div class="image-container">
-            <img src="./images/1.jpg" alt="car" width="800px" height="600px">
+        <div class="slide-container">
+            <div>
+                <img src="./images/1.jpg" class="active" alt="car" width="800px" height="600px">
+            </div>
+            <div>
+                <img src="./images/2.jpg" class="hidden" alt="car" width="800px" height="600px">
+            </div>
+            <div>
+                <img src="./images/3.jpg" class="hidden" alt="car" width="800px" height="600px">
+            </div>
+            <div>
+                <img src="./images/4.jpg" class="hidden" alt="car" width="800px" height="600px">
+            </div>
+            <div>
+                <img src="./images/5.jpg" class="hidden" alt="car" width="800px" height="600px">
+            </div>
+            <div>
+                <img src="./images/6.jpg" class="hidden" alt="car" width="800px" height="600px">
+            </div>
+            <div>
+                <img src="./images/7.jpg" class="hidden" alt="car" width="800px" height="600px">
+            </div>
+            <div>
+                <img src="./images/8.jpg" class="hidden" alt="car" width="800px" height="600px">
+            </div>
+            <div>
+                <img src="./images/9.jpg" class="hidden" alt="car" width="800px" height="600px">
+            </div>
             <ul class="slider-steps js--point-steps">
-                <li id="1"></li>
-                <li id="2"></li>
-                <li id="3"></li>
             </ul>
         </div>
         <div class="button-container">
@@ -32,51 +55,53 @@
 <script>
     "use strict";
 
-    const image = document.getElementsByTagName("img")[0];
+    const images = document.getElementsByTagName("img");
     const prevImageButton = document.querySelector(".js--prev-button");
     const nextImageButton = document.querySelector(".js--next-button");
-    const pointSwitches = document.querySelector(".js--point-steps");
+    const pointSwitch = document.querySelector(".js--point-steps");
 
-    let imageNumber = 1;
+    (function createPoints() {
+        for (let i = 1; i <= images.length; i++) {
+            const listItem = document.createElement("li");
+            listItem.setAttribute("id", `${i}`);
+            pointSwitch.appendChild(listItem);
+        }
+    })()
+
+    let currentImageIndex = 0;
     let step = 0;
     let currentPoint = 1;
+    let prevPoint = 0;
 
     function showImage(step) {
-        imageNumber += step;
+        images[currentImageIndex].style.display = "none";
+        currentImageIndex += step;
 
-        if (imageNumber > 1) {
+        currentImageIndex === 0 ?
+            prevImageButton.style.display = "none" :
             prevImageButton.style.display = "flex";
-        } else {
-            prevImageButton.style.display = "none";
-        }
 
-        if (imageNumber === 9) {
-            nextImageButton.style.display = "none";
-        } else {
+        currentImageIndex === images.length - 1 ?
+            nextImageButton.style.display = "none" :
             nextImageButton.style.display = "flex";
-        }
 
-        let imageURL = `./images/${imageNumber}.jpg`;
+        images[currentImageIndex].style.display = "block";
+        changePointColor();
+    }
 
-        image.setAttribute("src", imageURL);
-
-        if (imageNumber % 3 === 1) {
-            currentPoint = 1;
-        } else if (imageNumber % 3 === 0) {
-            currentPoint = 3;
-        } else {
-            currentPoint = 2;
-        }
-
-        changePointColor(currentPoint);
+    function changePointColor() {
+        document.getElementById(`${prevPoint}`).style.backgroundColor = "lightgrey";
+        document.getElementById(`${currentPoint}`).style.backgroundColor = "orange";
     }
 
     function getImageWithButton(event) {
         if (event.target.className === "js--next-button") {
             ++step;
+            prevPoint = currentPoint;
             ++currentPoint;
         } else {
             --step;
+            prevPoint = currentPoint;
             --currentPoint;
         }
         showImage(step);
@@ -84,43 +109,19 @@
     }
 
     function getImageWithPoint(event) {
-        step = event.target.id - currentPoint;
-        currentPoint = event.target.id;
-        showImage(step);
-        step = 0;
-    }
+        if (event.target.tagName === "LI") {
+            prevPoint = currentPoint;
+            currentPoint = event.target.id;
 
-    function changePointColor(point) {
-        switch (point) {
-            case 1: {
-                pointSwitches.children[0].style.backgroundColor = "orange";
-                pointSwitches.children[1].style.backgroundColor = "lightgrey";
-                pointSwitches.children[2].style.backgroundColor = "lightgrey";
-                break;
-            }
-            case 2: {
-                pointSwitches.children[0].style.backgroundColor = "lightgrey";
-                pointSwitches.children[1].style.backgroundColor = "orange";
-                pointSwitches.children[2].style.backgroundColor = "lightgrey";
-                break;
-            }
-            case 3: {
-                pointSwitches.children[0].style.backgroundColor = "lightgrey";
-                pointSwitches.children[1].style.backgroundColor = "lightgrey";
-                pointSwitches.children[2].style.backgroundColor = "orange";
-                break;
-            }
-            default: {
-                pointSwitches.children[0].style.backgroundColor = "orange";
-                pointSwitches.children[1].style.backgroundColor = "lightgrey";
-                pointSwitches.children[2].style.backgroundColor = "lightgrey";
-            }
+            step = currentPoint - prevPoint;
+            showImage(step);
+            step = 0;
         }
     }
 
     prevImageButton.addEventListener("click", getImageWithButton);
     nextImageButton.addEventListener("click", getImageWithButton);
-    pointSwitches.addEventListener("click", getImageWithPoint);
+    pointSwitch.addEventListener("click", getImageWithPoint);
 </script>
 </body>
 </html>
