@@ -5,6 +5,7 @@
 }
 
 body {
+    padding: 40px;
     line-height: 1.2;
     font-size: 18px;
     background-color: #66deb2;
@@ -53,13 +54,16 @@ h1, h2 {
     align-items: center;
     margin-bottom: 10px;
 }
+
 .todo-item--checked {
     text-decoration: line-through;
 }
+
 .todo-item__description {
     flex-grow: 1;
     padding-left: 10px;
 }
+
 .todo-item__delete {
     background: #0be69d;
     border: none;
