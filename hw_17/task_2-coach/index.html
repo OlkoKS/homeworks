@@ -10,5 +10,28 @@
 <body>
 <h3>Task 2</h3>
 <h4>Coach</h4>
+<script>
+    "use strict"
+
+    class Coach {
+        constructor(coach, specialization, rating) {
+            this.Coach = coach;
+            this.Specialization = specialization;
+            this.Rating = rating;
+        }
+
+        displayInfo() {
+            for (let key in this) {
+                console.log(`${key}:`, this[key]);
+            }
+        }
+    }
+
+    const coach1 = new Coach('John Doe', 'Fitness', 4.7);
+    const coach2 = new Coach('Alice Smith', 'Yoga', 4.9);
+
+    coach1.displayInfo();
+    coach2.displayInfo();
+</script>
 </body>
 </html>
