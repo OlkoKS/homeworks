@@ -15,15 +15,13 @@
 
     class Coach {
         constructor(coach, specialization, rating) {
-            this.Coach = coach;
-            this.Specialization = specialization;
-            this.Rating = rating;
+            this.coach = coach;
+            this.specialization = specialization;
+            this.rating = rating;
         }
 
         displayInfo() {
-            for (let key in this) {
-                console.log(`${key}:`, this[key]);
-            }
+            console.log(`Coach: ${this.coach}, Specialization: ${this.specialization}, Rating: ${this.rating}`);
         }
     }
 
