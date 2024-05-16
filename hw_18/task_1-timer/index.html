@@ -22,16 +22,6 @@
             align-items: center;
         }
 
-        span {
-            margin-bottom: 40px;
-            font-size: 32px;
-            color: orange;
-        }
-
-        .hidden {
-            display: none;
-        }
-
         .timer {
             margin-bottom: 20px;
             font-size: 80px;
@@ -56,7 +46,6 @@
 <h4>Timer</h4>
 <div class="timer-container">
     <div class="timer" id="time-container"></div>
-    <span class="js--timer-error hidden">Максимальний відлік таймеру: 3600 с (60 хв)</span>
     <div>
         <button id="start-button">Start</button>
         <button id="stop-button">Stop</button>
@@ -69,29 +58,54 @@
         #isRunning = false;
         #timerInterval;
 
-        constructor(seconds) {
-            this.seconds = seconds;
+        constructor(data) {
+            this.timerStart = this.#convertToSeconds(data);
+
             this.element = document.querySelector("#time-container");
             this.element.textContent = this.updateTimer();
         }
 
+        #convertToSeconds = (object) => {
+            const {days, hours, minutes, seconds} = object;
+            return seconds + minutes * 60 + hours * 3600 + days * 86400;
+        }
+
+        #addLeadingZero = (value) => {
+            return value.toString().padStart(2, "0");
+        }
+
         updateTimer = () => {
-            if (this.seconds > 3600) {
-                document.querySelector(".js--timer-error").classList.remove("hidden");
+            let accumulator = this.timerStart;
+
+            let timeDays = Math.trunc(this.timerStart / 86400);
+            accumulator -= timeDays * 86400;
+
+            let timeHours = this.#addLeadingZero(Math.trunc(accumulator / 3600));
+            accumulator -= timeHours * 3600;
+
+            let timeMinutes = this.#addLeadingZero(Math.trunc(accumulator / 60));
+            accumulator -= timeMinutes * 60;
+
+            let timeSeconds = this.#addLeadingZero(accumulator);
+
+            let timer = `${timeMinutes} : ${timeSeconds}`;
+
+            if (timeDays === 0 && timeHours === "00") {
+                return timer;
+            } else if (timeDays === 0 && timeHours !== "00") {
+                return `${timeHours} : ` + timer;
             } else {
-                let timeMinutes = Math.trunc(this.seconds / 60).toString().padStart(2, "0");
-                let timeSeconds = (this.seconds % 60).toString().padStart(2, "0");
-                return `${timeMinutes} : ${timeSeconds}`;
+                return `${timeDays} : ${timeHours} : ` + timer;
             }
         }
 
         start = () => {
-            if (this.seconds > 0 && this.seconds <= 3600 && !this.#isRunning) {
+            if (this.timerStart > 0 && !this.#isRunning) {
                 this.#isRunning = true;
                 this.#timerInterval = setInterval(() => {
-                    --this.seconds;
-                    this.element.textContent = this.updateTimer(this.seconds);
-                    if (this.seconds === 0) {
+                    --this.timerStart;
+                    this.element.textContent = this.updateTimer(this.timerStart);
+                    if (this.timerStart === 0) {
                         clearInterval(this.#timerInterval);
                         this.element.style.color = "orange";
                     }
@@ -105,7 +119,14 @@
         }
     }
 
-    let timer1 = new Timer(5);
+    let timerData = {
+        days: 0,
+        hours: 1,
+        minutes: 0,
+        seconds: 5
+    }
+
+    let timer1 = new Timer(timerData);
 
     document.querySelector("#start-button").addEventListener("click", timer1.start);
     document.querySelector("#stop-button").addEventListener("click", timer1.stop);
