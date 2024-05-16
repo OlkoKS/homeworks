@@ -6,9 +6,98 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        body {
+            padding: 40px;
+            font-size: 32px;
+        }
+
+        h4 {
+            text-align: center;
+        }
+
+        .timer-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .timer {
+            margin-bottom: 20px;
+            font-size: 80px;
+        }
+
+        button {
+            width: 140px;
+            height: 48px;
+            font-size: 24px;
+            background-color: cornflowerblue;
+            border-radius: 4px;
+            border: 1px solid blue;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    </style>
 </head>
 <body>
 <h3>Task 1</h3>
 <h4>Timer</h4>
+<div class="timer-container">
+    <div class="timer" id="time-container"></div>
+    <div>
+        <button id="start-button">Start</button>
+        <button id="stop-button">Stop</button>
+    </div>
+</div>
+<script>
+    "use strict"
+
+    class Timer {
+        #isRunning = false;
+        #timerInterval;
+
+        constructor(seconds) {
+            this.seconds = seconds;
+            this.element = document.querySelector("#time-container");
+            this.element.textContent = this.updateTimer();
+        }
+
+        updateTimer = () => {
+            if (this.seconds > 3600) {
+                return `Максимальний відлік таймеру: 3600 с (60 хв)`;
+            } else {
+                let timeMinutes = Math.trunc(this.seconds / 60).toString().padStart(2, "0");
+                let timeSeconds = (this.seconds % 60).toString().padStart(2, "0");
+                return `${timeMinutes} : ${timeSeconds}`;
+            }
+        }
+
+        start = () => {
+            if (!this.#isRunning && this.seconds > 0) {
+                this.#isRunning = true;
+                this.#timerInterval = setInterval(() => {
+                    --this.seconds;
+                    this.element.textContent = this.updateTimer(this.seconds);
+                    if (this.seconds === 0) {
+                        clearInterval(this.#timerInterval);
+                        this.element.style.color = "orange";
+                    }
+                }, 1000);
+            }
+        }
+
+        stop = () => {
+            this.#isRunning = false;
+            clearInterval(this.#timerInterval);
+        }
+    }
+
+    let timer1 = new Timer(5);
+
+    document.querySelector("#start-button").addEventListener("click", timer1.start);
+    document.querySelector("#stop-button").addEventListener("click", timer1.stop);
+</script>
 </body>
 </html>
