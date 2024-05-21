@@ -66,6 +66,10 @@ button {
     height: 47px;
     background-color: cornflowerblue;
     border: none;
+
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 .hidden {
