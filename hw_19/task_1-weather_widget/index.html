@@ -96,14 +96,11 @@
     }
 
     function showCurrentDateAndTime() {
-        let month = showMonth(new Date().getMonth());
-        let date = new Date().getDate();
-        let year = new Date().getFullYear();
-        let day = showDayOfWeek(new Date().getDay());
-        dateEl.textContent = `${month} ${date}, ${year} - ${day}`;
+        showCurrentDate();
         showCurrentTime();
 
         setInterval(() => {
+            showCurrentDate();
             showCurrentTime();
         }, 1000);
     }
@@ -116,6 +113,14 @@
     function showDayOfWeek(index) {
         let daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
         return daysOfWeek[index];
+    }
+
+    function showCurrentDate() {
+        let month = showMonth(new Date().getMonth());
+        let date = new Date().getDate();
+        let year = new Date().getFullYear();
+        let day = showDayOfWeek(new Date().getDay());
+        dateEl.textContent = `${month} ${date}, ${year} - ${day}`;
     }
 
     function showCurrentTime() {
@@ -135,25 +140,19 @@
         console.error("Неможливо отримати Ваше місцезнаходження");
     }
 
-    function getWeather(url) {
-        let weatherPromise = fetch(url);
+    async function getWeather(url) {
+        try {
+            let response = await fetch(url);
 
-        weatherPromise
-            .then(getWeatherResponse)
-            .then(getWeatherData)
-            .catch(error => console.log(error))
-    }
-
-    function getWeatherResponse(res) {
-        if (!res.ok) {
-            throw new Error(res.status)
-        } else {
-            return res.json();
+            if (response.status === 200) {
+                let weatherData = await response.json();
+                showWeatherData(weatherData);
+            } else {
+                console.log("ERROR");
+            }
+        } catch (error) {
+            console.log(error);
         }
-    }
-
-    function getWeatherData(data) {
-        showWeatherData(data);
     }
 
     function showWeatherData(data) {
