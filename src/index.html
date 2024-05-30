@@ -6,9 +6,20 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
 </head>
 <body>
 <h3>Task 1</h3>
-<h4>TODO List</h4>
+<div class="container">
+    <h4>TODO List</h4>
+    <form class="form js--form">
+        <label for="value"></label>
+        <input type="text" name="value" id="value" required class="form__input js--form__input">
+        <button class="form__btn">Додати</button>
+    </form>
+    <ul class="js--todos-wrapper"></ul>
+</div>
+<script src="main.js"></script>
 </body>
 </html>
