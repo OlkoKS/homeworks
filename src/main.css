@@ -45,6 +45,10 @@ h1, h2 {
     width: 100px;
 }
 
+ul {
+    padding: 0;
+}
+
 .todo-item {
     display: flex;
     padding: 10px;
@@ -61,7 +65,7 @@ h1, h2 {
 
 .todo-item__description {
     flex-grow: 1;
-    padding-left: 10px;
+    padding: 10px 0 10px 10px;
 }
 
 .todo-item__delete {
