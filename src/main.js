@@ -77,7 +77,6 @@ function deleteTodo(event) {
     createTodoList();
 }
 
-
 function openModal(event) {
     let $todoItem = $(event.relatedTarget);
 
