@@ -8,7 +8,7 @@ const $exampleModal = $('#exampleModal');
 $(document).ready(createTodoList);
 
 function createTodoList() {
-    let todos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    const todos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
     if (todos) {
         todos.forEach(createTodoElement);
     }
@@ -44,7 +44,7 @@ function addTodo(event) {
     }
 
     createTodoElement(newTodoData);
-    let todos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    const todos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos ? [...todos, newTodoData] : [newTodoData]));
     $input.val('');
 }
@@ -55,7 +55,7 @@ function createId() {
 
 function setChecking(event) {
     let $todoItem = $(event.target).closest('li');
-    let todos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    const todos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
 
     todos.map(item => {
         if (item.id === $todoItem[0].id) {
