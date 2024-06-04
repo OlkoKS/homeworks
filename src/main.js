@@ -18,7 +18,7 @@ function createTodoList() {
 }
 
 function createTodoElement(data) {
-    let $listItem = $('<li class="todo-item"></li>').attr('id', `${data.id}`).appendTo($todoList);
+    const $listItem = $('<li class="todo-item"></li>').attr('id', `${data.id}`).appendTo($todoList);
 
     $('<input type="checkbox">').on({click: setChecking}).appendTo($listItem);
     $('<span class="todo-item__description"></span>')
@@ -39,7 +39,7 @@ function addTodo(event) {
     event.preventDefault();
     const $input = $form.find('input');
 
-    let newTodoData = {
+    const newTodoData = {
         id: `${createId()}`, text: $input.val(), isDone: false
     }
 
@@ -54,7 +54,7 @@ function createId() {
 }
 
 function setChecking(event) {
-    let $todoItem = $(event.target).closest('li');
+    const $todoItem = $(event.target).closest('li');
     const todos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
 
     todos.map(item => {
@@ -67,7 +67,7 @@ function setChecking(event) {
 }
 
 function deleteTodo(event) {
-    let todoId = $(event.target).closest('li')[0].id;
+    const todoId = $(event.target).closest('li')[0].id;
     let todos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
 
     todos = todos.filter(item => item.id !== todoId);
@@ -78,10 +78,10 @@ function deleteTodo(event) {
 }
 
 function openModal(event) {
-    let $todoItem = $(event.relatedTarget);
+    const $todoItem = $(event.relatedTarget);
 
-    let todoText = $todoItem.attr('data-bs-whatever');
-    let isDone = $todoItem.parent().hasClass('todo-item--checked');
+    const todoText = $todoItem.attr('data-bs-whatever');
+    const isDone = $todoItem.parent().hasClass('todo-item--checked');
 
     $('.modal-title').text(`${todoText}`);
     $('.modal-body-text').text(isDone ? "Is Done" : "Need To Do");
