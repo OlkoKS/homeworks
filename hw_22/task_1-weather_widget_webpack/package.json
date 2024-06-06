@@ -1,0 +1,29 @@
+{
+  "name": "task_1-weather_widget_webpack",
+  "version": "1.0.0",
+  "description": "За допомогою запиту вивести виджет погоди.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --mode=production",
+    "watch": "webpack --watch --mode=development"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "css-loader": "^7.1.2",
+    "html-webpack-plugin": "^5.6.0",
+    "mini-css-extract-plugin": "^2.9.0",
+    "sass": "^1.77.4",
+    "sass-loader": "^14.2.1",
+    "style-loader": "^4.0.0",
+    "terser-webpack-plugin": "^5.3.10",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "path": "^0.12.7",
+    "uglify-js": "^3.17.4"
+  }
+}
