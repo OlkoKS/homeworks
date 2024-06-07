@@ -1,6 +1,6 @@
 // "use strict"
 
-import "../scss/index.scss";
+// import "../scss/index.scss";
 import {getWeather} from "./api";
 import {showCurrentDateAndTime, updateWeather} from './helpers';
 
