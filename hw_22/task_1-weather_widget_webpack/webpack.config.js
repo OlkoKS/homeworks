@@ -2,7 +2,7 @@ const path = require('node:path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-
+const HtmlWebpackInlineSVGPlugin = require( "html-webpack-inline-svg-plugin");
 
 module.exports = {
     entry: './src/js/index.js',
@@ -43,6 +43,9 @@ module.exports = {
         }),
         new MiniCssExtractPlugin({
             filename: 'index.css'
+        }),
+        new HtmlWebpackInlineSVGPlugin ({
+            runPreEmit: true,
         })
     ],
 }
