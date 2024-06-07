@@ -3,20 +3,17 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserPlugin = require("terser-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-// const sass = require('sass');
-//
-// const result = sass.compile('./src/scss/index.scss');
 
 module.exports = {
     entry: './src/js/index.js',
     output: {
-        path: path.resolve(__dirname, 'build'),
         filename: 'index.js'
     },
     optimization: {
         minimize: true,
         minimizer: [new TerserPlugin({
-            minify: TerserPlugin.uglifyJsMinify,
+            minify: TerserPlugin.esbuildMinify,
+            terserOptions: {},
         })],
     },
     module: {
@@ -34,6 +31,7 @@ module.exports = {
                     {
                         loader: "sass-loader",
                         options: {
+                            implementation: require("sass"),
                             sourceMap: true,
                         },
                     },
