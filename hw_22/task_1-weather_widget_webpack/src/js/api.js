@@ -1,3 +1,5 @@
+"use strict"
+
 import {createWeatherIcon, textToUpperCase, showWeatherUpdateTime} from "./helpers";
 
 const refs = {

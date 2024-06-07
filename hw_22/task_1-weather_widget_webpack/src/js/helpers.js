@@ -1,3 +1,5 @@
+"use strict"
+
 import {createWeatherWidget} from './index';
 
 const refs = {

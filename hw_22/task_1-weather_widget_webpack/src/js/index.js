@@ -1,4 +1,4 @@
-// "use strict"
+"use strict"
 
 import "../scss/index.scss";
 import {getWeather} from "./api";
