@@ -7,7 +7,8 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
     entry: './src/js/index.js',
     output: {
-        filename: 'index.js'
+        filename: 'index.js',
+        path: path.resolve(__dirname, 'build'),
     },
     optimization: {
         minimize: true,
