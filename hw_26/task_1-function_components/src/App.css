@@ -1,0 +1,37 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+body {
+  font-family: "Lobster", sans-serif;;
+  font-size: 32px;
+}
+
+p, h2, h3, h4 {
+  margin: 0;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.section {
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+
+.header-container {
+  padding: 48px 0 24px 0;
+}
+
+.header-title {
+  text-align: center;
+}
+
+span {
+  font-weight: 700;
+}
