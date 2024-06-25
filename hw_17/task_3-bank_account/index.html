@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h3>Task 3</h3>
+<h4>Bank Account</h4>
+<script>
+    "use strict"
+
+    class BankAccount {
+        #balance;
+
+        constructor(amount) {
+            this.#balance = amount;
+        }
+
+        getBalance() {
+            return `Баланс Вашого рахунку: ${this.#balance}`;
+        }
+
+        deposit(amount) {
+            this.#balance += amount;
+        }
+
+        withdraw(amount) {
+            this.#balance -= amount;
+        }
+    }
+
+    const account1 = new BankAccount(1000);
+
+    console.log(account1.getBalance());
+
+    account1.deposit(500);
+    console.log(account1.getBalance());
+
+    account1.withdraw(200);
+    console.log(account1.getBalance());
+</script>
+</body>
+</html>

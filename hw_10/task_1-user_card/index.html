@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        let user = {
+            name: 'Olha',
+            age: 34,
+            city: 'Kherson',
+            showUserCard() {
+                let userCard = Object.entries(this);
+                console.log('Інформація користувача:');
+                userCard.forEach((el) => {
+                    if (typeof el[1] !== 'function') {
+                        console.log(`${el[0]}: ${el[1]}`);
+                    }
+                });
+            }
+        };
+
+        user.showUserCard();
+    </script>
+</head>
+<body>
+<h3>Task 1</h3>
+<p>User card</p>
+</body>
+</html>

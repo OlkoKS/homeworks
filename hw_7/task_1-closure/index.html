@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        function calcSum() {
+            let value = 0;
+            return function (x) {
+                value += x;
+                return value;
+            }
+        }
+
+        let sum = calcSum();
+
+        console.log(sum(4)); // 4
+        console.log(sum(6)); // 10
+        console.log(sum(10)); // 20
+        console.log(sum(7)); // 27
+    </script>
+</head>
+<body>
+<h3>Task 1</h3>
+<p>Closure</p>
+</body>
+</html>

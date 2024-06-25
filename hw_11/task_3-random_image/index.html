@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            padding: 20px;
+            font-size: 24px;
+        }
+
+        .homework {
+            width: 1200px;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const hwContainer = document.querySelector('.homework');
+            const imageContainer = document.createElement('div');
+            hwContainer.appendChild(imageContainer);
+            const image = document.createElement('img');
+
+            function getRandomIntInclusive(min, max) {
+                min = Math.ceil(min);
+                max = Math.floor(max);
+                return Math.floor(Math.random() * (max - min + 1) + min); // Максимум та мінімум включно
+            }
+
+            let imageSource = getRandomIntInclusive(1, 9);
+            let imgURL = `./images/${imageSource}.jpg`;
+            image.setAttribute('src', imgURL);
+            image.setAttribute('alt', 'car');
+            image.setAttribute('width', '800px');
+            image.setAttribute('height', '600px');
+            imageContainer.appendChild(image);
+            imageContainer.style.objectFit = 'cover';
+        })
+    </script>
+</head>
+<body>
+<div class="homework">
+    <h3>Task 3</h3>
+    <p>Show random image</p>
+</div>
+</body>
+</html>

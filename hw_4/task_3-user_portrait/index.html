@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        function nameToUpperCase(name) {
+            name = `${name[0].toUpperCase()}${name.slice(1)}`;
+            return name;
+        }
+
+        function getUserAge(year) {
+            let thisYear = new Date().getFullYear();
+            return thisYear - year;
+        }
+
+        function getCityInfo(city) {
+            let userCityInfo;
+            switch(city) {
+                case 'Kyiv':
+                    userCityInfo = 'You live in the capital of Ukraine';
+                    break;
+                case 'Washington':
+                    userCityInfo = 'You live in the capital of USA';
+                    break;
+                case 'London':
+                    userCityInfo = 'You live in the capital of Great Britain';
+                    break;
+                default:
+                    userCityInfo = `You live in ${city} city`;
+            }
+            return userCityInfo;
+        }
+
+        function getSportInfo(sport) {
+            let userSportInfo;
+            switch(sport) {
+                case 'Football':
+                    userSportInfo = 'Cool! Do you want to become a Lionel Messi?';
+                    break;
+                case 'Basketball':
+                    userSportInfo = 'Cool! Do you want to become a Lebron James?';
+                    break;
+                case 'Boxing':
+                    userSportInfo = 'Cool! Do you want to become an Oleksandr Usik?';
+                    break;
+                default:
+                    userSportInfo = `Your favorite sport - ${sport}`;
+            }
+            return userSportInfo;
+        }
+
+        function showUserPortrait() {
+            let ageInfo;
+            let cityInfo;
+            let sportInfo;
+
+            let yearOfBirth = prompt('Please, enter your year of birth:');
+            console.log(yearOfBirth);
+
+            if(yearOfBirth) {
+                let userAge = getUserAge(yearOfBirth);
+                ageInfo = `You are ${userAge} years old`;
+                console.log(ageInfo);
+            } else {
+                ageInfo = '';
+                alert('It\'s a pity that you didn\'t want to specify year of birth!');
+            }
+
+            let city = prompt('In which city do you live?');
+
+            if(city) {
+                city = nameToUpperCase(city);
+                console.log(city);
+
+                cityInfo = getCityInfo(city);
+                console.log(cityInfo);
+            } else {
+                cityInfo = '';
+                alert('It\'s a pity that you didn\'t want to specify your city!');
+            }
+
+            let sport = prompt('What is your favorite sport?');
+
+            if(sport) {
+                sport = nameToUpperCase(sport);
+                console.log(sport);
+
+                sportInfo = getSportInfo(sport);
+                console.log(sportInfo);
+            } else {
+                sportInfo = '';
+                alert('It\'s a pity that you didn\'t want to specify your favorite sport!');
+            }
+
+            alert(`Your portrait:
+            ${ageInfo}
+            ${cityInfo}
+            ${sportInfo}`);
+        }
+
+        showUserPortrait();
+    </script>
+</head>
+<body>
+<h3>Task 3</h3>
+<p>User portrait</p>
+</body>
+</html>

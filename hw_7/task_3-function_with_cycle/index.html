@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        (function getNumbers() {
+            let number = 0;
+
+            for (let i = 1; i <= 10; i++) {
+                let userNumber = prompt('Будь ласка, введіть число більше 100:');
+
+                number = userNumber;
+
+                if (+userNumber > 100 || isNaN(+userNumber) || i === 10) {
+                    console.log(`Кількість ітерацій циклу: ${i}`);
+                    console.log(`Результат: ${number}`);
+                    break;
+                }
+            }
+        })();
+    </script>
+</head>
+<body>
+<h3>Task 3</h3>
+<p>Function with cycle</p>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        let contactBook = {
+            contacts: [{name: 'Alice', phone: +380661111111, email: 'alice@gmail.com'}, {
+                name: 'Mike',
+                phone: +380672222222,
+                email: 'mike@gmail.com'
+            }, {
+                name: 'Mike',
+                phone: +380684444444,
+                email: 'mike2@gmail.com'
+            }, {name: 'Nick', phone: +380683333333, email: 'nick@gmail.com'}],
+
+            getContactByName(name) {
+                console.log(`Контакти з таким імʼям: `);
+                this.contacts.filter(contact => {
+                    if (contact.name === name) {
+                        console.log(contact);
+                    }
+                });
+            },
+
+            addContact(name, phone, email) {
+                let newContact = {name, phone, email};
+                this.contacts.push(newContact);
+                console.log(`${name} додано у книгу контактів`);
+                return this.contacts;
+
+            }
+        }
+
+        contactBook.getContactByName('Mike');
+        console.log(contactBook.addContact('Olha', 654917820, 'olkoks000@gmail.com'));
+    </script>
+</head>
+<body>
+<h3>Task 2</h3>
+<p>Contact book</p>
+</body>
+</html>
